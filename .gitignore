@@ -1,0 +1,14 @@
+# AI-APPLY Skill .gitignore
+
+# 用戶個人資料檔（含真實公司、統編、聯絡資訊）
+# 請勿提交，以保護個人隱私
+user-profile.yaml
+
+# 抓取工具的暫存輸出
+tools/output/
+*.fetched.md
+
+# macOS 系統檔
+.DS_Store
+__pycache__/
+*.pyc

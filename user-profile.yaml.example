@@ -1,0 +1,38 @@
+# AI-APPLY 用戶資料設定檔範例
+#
+# 使用方式：
+#   1. 複製本檔案並命名為 user-profile.yaml
+#   2. 填入您的真實公司與聯絡資訊
+#   3. user-profile.yaml 已加入 .gitignore，不會被 git 追蹤
+#
+# 注意：本 .example 檔使用虛擬資料，請勿直接使用。
+
+company:
+  name: "創新科技有限公司"        # 公司全名（統一使用）
+  tax_id: "12345678"             # 統一編號（8 碼）
+  founded: "2022-01-01"          # 成立日期（YYYY-MM-DD）
+  address: "台北市信義區信義路五段7號" # 公司地址
+  website: "https://example-startup.com"  # 公司官網
+  description: |
+    創新科技有限公司專注於 AI 與雲端服務解決方案，
+    協助企業提升營運效率與數位轉型。
+
+team:
+  - name: "王大明"
+    role: "創辦人 / CEO"
+    email: "daming.wang@example.com"
+    phone: "09XX-XXX-XXX"
+    linkedin: "https://linkedin.com/in/daming-wang"
+    github: "https://github.com/daming-wang"
+  - name: "李小花"
+    role: "技術長 / CTO"
+    email: "xiaohua.li@example.com"
+    phone: "09XX-XXX-XXX"
+    linkedin: "https://linkedin.com/in/xiaohua-li"
+    github: "https://github.com/xiaohua-li"
+
+contact:
+  primary_name: "王大明"
+  primary_email: "daming.wang@example.com"
+  primary_phone: "09XX-XXX-XXX"
+  secondary_email: "info@example-startup.com"
