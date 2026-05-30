@@ -18,9 +18,12 @@ from scrapers.pcc_tender import PccTenderScraper
 from scrapers.digiplus import DigiplusScraper
 from scrapers.sbir_county_tracker import SbirCountyTrackerScraper
 from scrapers.sme_portal import SmePortalScraper
+from scrapers.startup_terrace import StartupTerraceScraper
+from scrapers.bhuntr import BhuntrScraper
 from scrapers.base import PlatformUpdate
 
 KNOWLEDGE_FILE = Path(__file__).parent.parent / 'knowledge' / 'competition-platforms.md'
+UPCOMING_FILE = Path(__file__).parent.parent / 'knowledge' / 'UPCOMING.md'
 TODAY = date.today().isoformat()
 
 SCRAPERS = [
@@ -30,6 +33,8 @@ SCRAPERS = [
     DigiplusScraper(),
     SbirCountyTrackerScraper(),
     SmePortalScraper(),
+    StartupTerraceScraper(),
+    BhuntrScraper(),
 ]
 
 
@@ -127,6 +132,109 @@ def append_new_platform(content: str, update: PlatformUpdate) -> str:
     return content[:idx] + entry + "\n\n---\n\n" + content[idx:]
 
 
+def generate_upcoming(kb_content: str) -> str:
+    """
+    從 competition-platforms.md 產生 UPCOMING.md。
+    策略：掃描各 entry 的 ⚡ notes + type，分類輸出。
+    """
+    lines = [
+        f"# 當前可申請機會（更新：{TODAY}）",
+        "",
+        "> 由 GitHub Action 每週一自動更新。⚡ 為自動偵測，人工確認前請以官網為準。",
+        "",
+    ]
+
+    # 解析所有 platform entries
+    entries: list[dict] = []
+    current: dict | None = None
+    for line in kb_content.splitlines():
+        if line.startswith("### "):
+            if current:
+                entries.append(current)
+            current = {'name': line[4:].strip(), 'url': '', 'type': '', 'notes': [], 'deadline_rules': []}
+        elif current:
+            if line.startswith("url:"):
+                current['url'] = line.split("url:", 1)[1].strip()
+            elif line.startswith("type:"):
+                current['type'] = line.split("type:", 1)[1].strip()
+            elif line.strip().startswith("- ") and '⚡' in line:
+                current['notes'].append(line.strip()[2:])
+            elif line.strip().startswith("- ") and 'deadline_rules' not in line:
+                txt = line.strip()[2:]
+                if '隨到隨審' in txt or 'rolling' in txt.lower() or '隨到隨受' in txt:
+                    current['deadline_rules'].append(txt)
+    if current:
+        entries.append(current)
+
+    # 常態受理補助（rolling）
+    rolling_grants = [e for e in entries if e['type'] == 'grant' and
+                      any('隨到' in n or '常態' in n or '額滿' in n for n in e['deadline_rules'])]
+    # 偵測到活躍的補助
+    active_grants = [e for e in entries if e['type'] == 'grant' and e['notes']]
+    # 競賽
+    competitions = [e for e in entries if e['type'] == 'competition']
+    # 標案
+    tenders = [e for e in entries if e['type'] == 'tender']
+    # 工具
+    tools = [e for e in entries if e['type'] == 'tool']
+
+    def fmt_entry(e: dict, show_notes: bool = True) -> str:
+        url = e['url']
+        note_str = ""
+        if show_notes and e['notes']:
+            note_str = " — " + e['notes'][0]
+        return f"- **{e['name']}**{note_str} | [{url}]({url})"
+
+    # 補助類
+    lines += ["## 補助類", ""]
+    lines += ["### 常態受理（可隨時申請）", ""]
+    rolling_names = {"經濟部 SBIR 中小企業創新研發計畫", "全台地方型 SBIR 縣市追蹤（115年度）",
+                     "經濟部 AI+ 產業計畫（製造業數位轉型）"}
+    for e in entries:
+        if e['name'] in rolling_names:
+            lines.append(fmt_entry(e))
+    lines += [""]
+
+    lines += ["### 年度申請（確認截止日）", ""]
+    annual_names = {"DIGITAL+ 數位服務創新補助計畫（數位產業署）", "SIIR 服務業創新研發補助計畫（中小企業處）",
+                    "中小企業數位轉型補助（中小企業處）"}
+    for e in entries:
+        if e['name'] in annual_names:
+            lines.append(fmt_entry(e, show_notes=False))
+    lines += [""]
+
+    lines += ["### ⚡ 自動偵測活躍狀態", ""]
+    for e in active_grants:
+        if e['name'] not in rolling_names | annual_names:
+            lines.append(fmt_entry(e))
+    lines += [""]
+
+    # 競賽類
+    lines += ["## 競賽類", ""]
+    for e in competitions:
+        lines.append(fmt_entry(e))
+    lines += [""]
+
+    # 標案類
+    lines += ["## 標案類（政府採購）", ""]
+    for e in tenders:
+        lines.append(fmt_entry(e, show_notes=False))
+    lines += [""]
+
+    # 工具
+    if tools:
+        lines += ["## AI 輔助工具", ""]
+        for e in tools:
+            lines.append(fmt_entry(e, show_notes=False))
+        lines += [""]
+
+    lines += [
+        "---",
+        f"*自動產生於 {TODAY}，資料來源：knowledge/competition-platforms.md*",
+    ]
+    return "\n".join(lines) + "\n"
+
+
 def main():
     content = load_md()
     changed = False
@@ -157,7 +265,16 @@ def main():
         save_md(content)
         print(f"\nSaved to {KNOWLEDGE_FILE}")
     else:
-        print("\nNo changes detected.")
+        print("\nNo changes to competition-platforms.md")
+
+    # 每次都重新產生 UPCOMING.md（反映最新 ⚡ 資料）
+    upcoming = generate_upcoming(content)
+    old_upcoming = UPCOMING_FILE.read_text(encoding='utf-8') if UPCOMING_FILE.exists() else ""
+    if upcoming != old_upcoming:
+        UPCOMING_FILE.write_text(upcoming, encoding='utf-8')
+        print(f"Updated UPCOMING.md")
+    else:
+        print("No changes to UPCOMING.md")
 
 
 if __name__ == '__main__':

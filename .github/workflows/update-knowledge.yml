@@ -32,20 +32,20 @@ jobs:
           PYTHONUNBUFFERED: '1'
 
       - name: Check for changes
-        id: changes
+        id: any_changes
         run: |
-          if git diff --quiet; then
+          if git diff --quiet -- knowledge/; then
             echo "changed=false" >> $GITHUB_OUTPUT
           else
             echo "changed=true" >> $GITHUB_OUTPUT
-            git diff --stat
+            git diff --stat -- knowledge/
           fi
 
       - name: Commit and push
-        if: steps.changes.outputs.changed == 'true'
+        if: steps.any_changes.outputs.changed == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add knowledge/competition-platforms.md
-          git commit -m "chore: 自動更新補助/標案知識庫 [$(date '+%Y-%m-%d')]"
+          git add knowledge/competition-platforms.md knowledge/UPCOMING.md
+          git commit -m "chore: 自動更新知識庫 [$(date '+%Y-%m-%d')]"
           git push

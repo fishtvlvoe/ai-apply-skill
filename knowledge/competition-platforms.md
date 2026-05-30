@@ -267,6 +267,56 @@ notes:
 
 ---
 
+### Startup Terrace 台灣新創競技場
+
+url: https://www.startupterrace.tw/
+type: competition
+fields:
+  - 公司/團隊基本資料
+  - 產品/服務說明
+  - 商業模式與市場規模
+  - 團隊介紹
+deadline_rules:
+  - 各活動獨立公告截止日，建議直接查 https://www.startupterrace.tw/ActivityList.aspx
+  - 大型競賽（科技新創競賽、潛力新創選拔）通常每年 Q1–Q2 徵件
+  - 海外拓銷團通常 Q2–Q3 招募
+how_to_get_guidelines:
+  - 活動列表：https://www.startupterrace.tw/ActivityList.aspx
+  - 科技新創競賽（Hi-Tech）：可爭取 80 萬驗證金 + 一對一企業鏈結
+  - 潛力新創選拔（Hi-Po Star）：年度旗艦選拔，每年 Q1–Q2 受理
+  - 海外拓銷：Techsauce / Electronica India / Meet Greater South 等機會
+restrictions:
+  - 部分活動需具公司登記
+  - 科技相關競賽通常要求已有 MVP 或產品原型
+notes:
+  - 政府支持的新創生態平台，結合競賽、加速、海外拓銷
+  - ⚡ 近期活動：園區活動/園區服務
+  - last_auto_checked: 2026-05-30
+
+---
+
+### 獎金獵人 Bounty Hunter 競賽列表
+
+url: https://bhuntr.com/tw/competitions
+type: competition
+fields:
+  - 依各競賽主辦方設定（詳見各競賽頁面）
+deadline_rules:
+  - 無統一截止日，每場競賽由主辦單位各自設定
+  - 推薦分類：創業競賽、設計競賽、黑客松、AI 挑戰賽、QITC
+how_to_get_guidelines:
+  - 進入 https://bhuntr.com/tw/competitions → 依類別/關鍵字篩選
+  - 高通台灣創新競賽（QITC）：https://bhuntr.com/tw/competitions/r7rvrt77t7ht66xxvh（入圍即 USD 10,000）
+  - 黑客松類：https://bhuntr.com/tw/competitions?category=116,117,118
+restrictions:
+  - ⚠️ 網站為 React SPA，自動抓取能力有限，部分競賽資訊需人工查閱
+notes:
+  - 台灣最大競賽聚合平台，涵蓋民間品牌、政府機關、學術單位主辦的比賽
+  - QITC 高通台灣創新競賽：每年 Q1 徵件，入圍即 USD 10,000，聚焦 AI PC / Edge AI
+  - last_auto_checked: 2026-05-30
+
+---
+
 ### 政府電子採購網（公共工程委員會）
 
 url: https://web.pcc.gov.tw/

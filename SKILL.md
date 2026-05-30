@@ -57,6 +57,13 @@ user-invocable: true
 
 ### 步驟 1：調研與競品分析
 
+**1a-0. 當前機會速覽**（GATE 通過後，步驟 1a 前執行）
+
+Read `knowledge/UPCOMING.md`。
+
+- 若用戶未指定特定平台：列出「常態受理」與「⚡ 自動偵測活躍」項目，問「你對哪個方向有興趣？」
+- 若用戶已指定平台：跳過，直接進 1a。
+
 **1a. 平台知識庫查詢**（在執行 research-guide.md 前先做）
 
 Read `knowledge/competition-platforms.md`，對用戶指定的競賽/平台名稱執行部分匹配（大小寫不敏感）：
@@ -85,11 +92,15 @@ Read `knowledge/content-writing.md` 執行內容產出。
 
 Read `knowledge/form-filling.md` 依環境選擇填表策略。
 
-| 環境 | 策略 | 自動化程度 |
-|------|------|-----------| 
-| Claude Code / Anthropic API | Level 1: Computer Use | 最高 |
-| 有 Python/Node.js | Level 2: Playwright/Puppeteer 腳本 | 中高 |
-| 其他 AI Agent | Level 3: 半自動輔助（生成→人工貼上） | 中 |
+| 環境 | 策略 | 自動化程度 | 說明 |
+|------|------|------------|------|
+| Claude Code / Anthropic API | Level 1: Computer Use | 最高 | 直接控制瀏覽器填表、截圖驗證 |
+| Codex CLI (OpenAI) | Level 2: Bash + Python 腳本 | 中高 | 批次執行 Playwright 腳本；Claude Code 派任 → Codex 執行 |
+| Kimi MCP (`mcp__kimi-code__*`) | Level 2: 文件分析 + 草稿生成 | 中高 | 大 context 讀規則書 → 生成申請文件草稿；不直接填表 |
+| 有 Python/Node.js | Level 2: Playwright/Puppeteer 腳本 | 中高 | 生成腳本後由用戶執行 |
+| Kimi Code (VS Code 插件) | Level 3: 半自動輔助（生成→人工貼上） | 中 | 編輯器側生成文件，需人工複製貼上 |
+| 其他 AI Agent | Level 3: 半自動輔助（生成→人工貼上） | 中 | 生成填表內容，用戶手動操作 |
+| Kimi CLI | ❌ 已停用（2026-05-24） | — | 改用 Kimi MCP 替代 |
 
 ---
 
