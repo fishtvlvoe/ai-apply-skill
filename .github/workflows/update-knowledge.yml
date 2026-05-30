@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      issues: write
 
     steps:
       - name: Checkout
@@ -49,3 +50,32 @@ jobs:
           git add knowledge/competition-platforms.md knowledge/UPCOMING.md
           git commit -m "chore: 自動更新知識庫 [$(date '+%Y-%m-%d')]"
           git push
+
+      - name: Create weekly notification issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          DATE=$(date '+%Y-%m-%d')
+          TITLE="📋 ${DATE} 本週補助／競賽機會更新"
+
+          # 確保 label 存在
+          gh label create "weekly-update" --color "0075ca" --description "每週自動更新通知" --repo ${{ github.repository }} 2>/dev/null || true
+
+          # 讀取 UPCOMING.md 內容（最多 60000 字元，避免超過 GitHub 上限）
+          BODY=$(head -c 60000 knowledge/UPCOMING.md)
+
+          # 關閉上週的同類 issue（避免積累）
+          gh issue list \
+            --repo ${{ github.repository }} \
+            --label "weekly-update" \
+            --state open \
+            --json number \
+            --jq '.[].number' \
+          | xargs -I{} gh issue close {} --repo ${{ github.repository }} 2>/dev/null || true
+
+          # 開新 issue
+          gh issue create \
+            --repo ${{ github.repository }} \
+            --title "$TITLE" \
+            --body "$BODY" \
+            --label "weekly-update"
