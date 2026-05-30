@@ -328,6 +328,117 @@ notes:
 
 ---
 
+### 全台地方型 SBIR 縣市追蹤（115年度）
+
+url: https://github.com/backtrue/sbir-grants/blob/main/sbir-grants/references/local_sbir_2026_tracker.md
+type: grant
+deadline_rules:
+  - 各縣市各自公告，通常集中於 4–6 月
+  - 台北市 SITI：全年隨到隨審（唯一全年受理）
+  - 其他縣市：待各縣市官網公告後才開放收件
+how_to_get_guidelines:
+  - 即時縣市狀態：https://github.com/backtrue/sbir-grants（community 維護，MIT 授權）
+  - 各縣市補助上限通常為個別 100 萬元、聯合申請 200 萬元
+  - 台北市 SITI 最高 500 萬元（特例）
+restrictions:
+  - 各縣市自訂資格，通常需有工廠或商業登記在當地
+  - 部分縣市有行業別限制（如嘉義縣優先無人機、新竹縣優先 AI/低碳）
+notes:
+  - 此條目由 GitHub Action 自動同步 backtrue/sbir-grants 追蹤表
+  - 2026-02-21 狀態：已可申請 1 縣市（台北市）、籌備中 4 縣市、待公告 17 縣市
+  - ⚡ 目前狀態：已可申請 1 縣市 / 籌備中 4 縣市 / 待公告 17 縣市
+  - ⚡ 已可申請：台北市（SITI 隨到隨審）
+  - last_auto_checked: 2026-05-30
+
+---
+
+### 中小及新創企業署（sme.gov.tw）
+
+url: https://www.sme.gov.tw/
+type: grant
+fields:
+  - 公司基本資料
+  - 依各計畫另行規定
+deadline_rules:
+  - 各輔導計畫獨立公告，sme.gov.tw 為入口匯集頁
+  - 建議設定頁面通知或定期回訪
+how_to_get_guidelines:
+  - 進入 https://www.sme.gov.tw → 8 大輔導主軸（數位轉型/淨零/研發/新創/融資/投資/通路/競賽）
+  - 客服專線：0800-280-280（馬上辦中心）
+  - 智能客服：sme.gov.tw 首頁右下角
+restrictions:
+  - 依各個計畫各自規定
+notes:
+  - 整合 SBIR、SIIR、數位轉型、青創貸款、女性創業等多個計畫的單一入口
+  - 「獎項競賽」分類含各類表揚與競賽資訊
+  - ⚡ 最新公告：2026-06-05APEC中小企業AI人才培力論壇 ／ 2026-05-29新創導師門診-《創業實驗室》親手調配出市場瘋搶的成功配方 ／ 2026-05-27管理顧問業個資宣導說明會
+  - last_auto_checked: 2026-05-30
+
+---
+
+### 經濟部補助計畫入口網（buzu.moea.gov.tw）
+
+url: https://buzu.moea.gov.tw/NewPortal/
+type: grant
+fields:
+  - 依各計畫另行規定
+deadline_rules:
+  - 依各個補助計畫各自公告
+how_to_get_guidelines:
+  - 進入 https://buzu.moea.gov.tw/NewPortal/ → 依部別/類型搜尋
+  - 涵蓋工業局、商業司、中小企業處等多個單位的補助計畫
+restrictions:
+  - 依各個計畫各自規定
+notes:
+  - ⚠️ 此網站外部連線不穩定，建議在台灣網路環境下使用
+  - 為經濟部底下各司處補助的整合查詢入口
+  - last_auto_checked: 2026-05-30
+
+---
+
+### G2B 企業服務整合網（smepass 企業得來速）
+
+url: https://www.sme.gov.tw/smepass
+type: grant
+fields:
+  - 公司統編（自動帶入相關資格篩選）
+deadline_rules:
+  - 依各個政府資源各自公告
+how_to_get_guidelines:
+  - 進入 sme.gov.tw → 搜尋「企業得來速」或 smepass
+  - 可用統編自動匹配適合的政府資源、補助、輔導計畫
+restrictions:
+  - 需具工商登記
+notes:
+  - 跨部會政府資源單一入口，涵蓋多個部會的輔導計畫
+  - 特色：輸入統編即可篩選「你適合申請的計畫」
+  - last_auto_checked: 2026-05-30
+
+---
+
+## 工具資源（AI 輔助申請工具）
+
+> 非補助平台本身，而是協助撰寫申請文件的 AI 工具。
+
+---
+
+### sbir-grants Skill（SBIR 計畫書撰寫工具）
+
+url: https://github.com/backtrue/sbir-grants
+type: tool
+how_to_get_guidelines:
+  - SaaS 版（免安裝）：https://sbir.thinkwithblack.com/
+  - Claude Code Skill：clone repo → 按 INSTALLATION.md 安裝
+  - MCP Server：按 CLAUDE_CODE_MCP_SETUP.md 設定（11 個 MCP 工具）
+notes:
+  - MIT 授權，社群維護（200+ stars）
+  - 適用：SBIR Phase 1/2/2+ 計畫書深度撰寫、審查委員視角檢核、市場分析擴寫
+  - 包含：22 縣市地方型 SBIR 追蹤、170K+ 字知識庫、6 維度品質雷達圖
+  - 使用時機：ai-apply 找到 SBIR 機會後，深度撰寫計畫書改用此工具
+  - last_auto_checked: 2026-05-30
+
+---
+
 ## 擴充說明
 
 ### 新增平台格式

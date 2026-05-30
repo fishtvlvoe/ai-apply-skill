@@ -16,6 +16,8 @@ from scrapers.eii_moea import EIIMoeaScraper
 from scrapers.sbir import SbirScraper
 from scrapers.pcc_tender import PccTenderScraper
 from scrapers.digiplus import DigiplusScraper
+from scrapers.sbir_county_tracker import SbirCountyTrackerScraper
+from scrapers.sme_portal import SmePortalScraper
 from scrapers.base import PlatformUpdate
 
 KNOWLEDGE_FILE = Path(__file__).parent.parent / 'knowledge' / 'competition-platforms.md'
@@ -26,6 +28,8 @@ SCRAPERS = [
     SbirScraper(),
     PccTenderScraper(),
     DigiplusScraper(),
+    SbirCountyTrackerScraper(),
+    SmePortalScraper(),
 ]
 
 
