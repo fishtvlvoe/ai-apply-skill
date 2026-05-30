@@ -12,3 +12,7 @@ tools/output/
 .DS_Store
 __pycache__/
 *.pyc
+
+# Python 虛擬環境
+.venv/
+*.egg-info/

@@ -140,6 +140,194 @@ notes:
 
 ---
 
+### DIGITAL+ 數位服務創新補助計畫（數位產業署）
+
+url: https://digiplus.adi.gov.tw/
+type: grant
+fields:
+  - 計畫名稱
+  - 申請企業統編
+  - 公司設立日期
+  - 計畫類別（前瞻技術開發/企業營運應用/終端消費應用/永續社會應用）
+  - 計畫書（含技術說明、預算規劃）
+  - 人事費、設備費、委外費等各科目預算明細
+  - 公司財務報表（近一年）
+  - 股東名冊（確認無陸資）
+deadline_rules:
+  - 每年度公告，通常 Q1 開放、Q2–Q3 截止
+  - 114年度補助計畫已於 113 年底公告
+  - 需至 digiplus.adi.gov.tw 系統線上申請，截止後不受理
+how_to_get_guidelines:
+  - 進入 https://digiplus.adi.gov.tw → 點選目標計畫（一般型補助/獎勵/主題型）
+  - 下載「申請須知」PDF（含評審標準、預算格式）
+  - 使用 fetch-and-convert.py：`python tools/fetch-and-convert.py https://digiplus.adi.gov.tw/`
+restrictions:
+  適用行業（限以下 3 碼行業代碼）：
+  - J582：軟體出版業
+  - J62：電腦程式設計、諮詢及相關服務業
+  - J63：資訊服務業
+  不得申請：
+  - 陸資企業
+  - 公司淨值（股東權益）為負值
+  - 銀行拒絕往來戶
+  - 同一計畫重複申請其他政府機關補助
+notes:
+  - 補助上限：一般型補助最高 500 萬元；主題型依公告另定
+  - 補助比例：政府最高補助 50%，企業需自籌 50% 以上
+  - 可申請科目：人事費、消耗材料、設備使用費、無形資產引進、委外研究驗證費、差旅費、創新推廣費
+  - 每一企業每年只能申請 1 案
+  - 系統申請後通常不可修改，送出前需仔細確認
+  - ⚠️ 此網站為 SPA，自動抓取能力有限，建議定期人工確認截止日
+  - last_auto_checked: 2026-05-30
+---
+
+### 經濟部 AI+ 產業計畫（製造業數位轉型）
+
+url: https://eii.nat.gov.tw/moeai-plus/
+type: grant
+fields:
+  - 公司名稱、統一編號
+  - 工廠登記或商業登記文件
+  - AI 診斷申請表
+  - 導入計畫書（診斷後才進入此階段）
+deadline_rules:
+  - 滾動式受理，無固定截止日
+  - 以梯次方式進行，額滿即截止
+  - 建議盡早申請（預算用完即停止）
+how_to_get_guidelines:
+  - 進入 https://eii.nat.gov.tw/moeai-plus/ → 點選「立即申請」
+  - 服務業入口：頁面有獨立「服務業申請」按鈕
+  - 電話：0800-023-800 / Email：ai-office@itri.org.tw
+  - 使用 fetch-and-convert.py：`python tools/fetch-and-convert.py https://eii.nat.gov.tw/moeai-plus/`
+restrictions:
+  - 主要適用：製造業（工廠登記）
+  - 服務業另有專屬入口
+  - 已申請其他政府 AI 補助者可能不得重複申請（需確認）
+notes:
+  - 三階段設計：診斷輔導（19萬+自籌1萬）→ AI應用導入（最高10萬設備+12萬人才）→ 研發轉型（個案最高500萬、聯盟最高4,000萬）
+  - 由工研院（ITRI）執行，非直接向經濟部申請
+  - 圖片中顯示每家企業個案最高可達 500 萬元
+  - ⚡ 頁面顯示仍在受理申請（自動偵測）
+  - last_auto_checked: 2026-05-30
+
+---
+
+### SIIR 服務業創新研發補助計畫（中小企業處）
+
+url: https://sme.moeasmea.gov.tw/startup/modules/funding/detail/?sId=13
+type: grant
+fields:
+  - 公司基本資料（名稱、統編、設立日期）
+  - 創新研發計畫書
+  - 財務報表
+  - 研發團隊資料
+deadline_rules:
+  - 待調查（需至官網確認年度公告）
+  - 通常年度上半年開放申請
+how_to_get_guidelines:
+  - 進入 https://sme.moeasmea.gov.tw → 搜尋「SIIR」
+  - 或直接至 https://www.sbir.org.tw 查詢服務業版 SBIR
+restrictions:
+  - 服務業為主（對應 SBIR 的服務業版本）
+  - 中小企業資格：資本額 ≤ 1 億元 或 員工數 < 200 人
+notes:
+  - 補助上限：Phase 1 最高 50 萬、Phase 2 最高 500 萬（待確認）
+  - 與 SBIR（製造業）同源，申請邏輯相近
+  - last_auto_checked: 2026-05-30
+
+---
+
+### 中小企業數位轉型補助（中小企業處）
+
+url: https://www.sme.gov.tw/
+type: grant
+fields:
+  - 公司基本資料
+  - 數位轉型計畫書
+  - 轉型目標說明
+deadline_rules:
+  - 114 年度補助計畫已開放（詳見官網公告）
+  - 滾動受理，建議確認目前批次截止日
+how_to_get_guidelines:
+  - 進入 https://www.sme.gov.tw → 「補助貸款」→「數位轉型補助」
+  - 或至 https://www.sme.gov.tw/drsme/ 查中小微企業多元振興平台
+restrictions:
+  - 中小企業資格（資本額 ≤ 1 億 或 員工 < 200 人）
+  - 不得有陸資
+notes:
+  - 最高補助 10 萬元（一般數位轉型），大型方案另定
+  - 可補助電商平台建置、數位行銷、雲端服務導入
+  - last_auto_checked: 2026-05-30
+
+---
+
+## 標案類（政府採購）
+
+> 適用情境：協助企業搜尋、評估、撰寫政府採購投標文件。與補助類不同——標案是「競標政府合約」，企業提供服務並收費，非申請補助金。
+
+---
+
+### 政府電子採購網（公共工程委員會）
+
+url: https://web.pcc.gov.tw/
+type: tender
+fields:
+  - 投標廠商基本資料
+  - 資格審查文件（公司登記、財務報表、履約實績）
+  - 技術規格說明書
+  - 報價單（投標單）
+  - 押標金（部分採購需繳）
+deadline_rules:
+  - 每個標案各自設定截止投標日時
+  - 截止後系統鎖定，不受理補件
+  - 通常公告至截止 10–30 天
+how_to_get_guidelines:
+  - 官網：https://web.pcc.gov.tw → 採購公告 → 關鍵字搜尋
+  - g0v API（結構化 JSON）：https://pcc.g0v.ronny.tw/api/tender/
+    - 範例：`GET /api/tender/?unit_id=<機關代碼>&year=114`
+    - 新 API 端點（已遷移）：https://pcc-api.openfun.app/
+  - 關鍵字建議：「AI」「數位轉型」「資訊服務」「系統建置」「軟體開發」
+restrictions:
+  - 需具採購金額對應資格（小額/未達查核/查核/巨額各有不同門檻）
+  - 部分標案要求特定認證（ISO、CMMI、政府資安）
+  - 不得有欠稅、停業、撤銷登記等紀錄
+notes:
+  - 機關代碼可至 https://web.pcc.gov.tw 查詢
+  - 推薦相關 GitHub 資源：
+    - pcc.g0v.ronny.tw — g0v 標案資料 API（結構化資料必備底層）
+    - evergabe-tenders-scraper — 關鍵字自動監控 + 自動蒐集架構參考
+    - Tender-Documents-AI-Agent — 標案文件 AI 解讀、提案協作
+    - GitHub Topics: tender-intelligence / tender-evaluation
+  - 整合建議：pcc API + 關鍵字監控 + AI 文件助理 = 完整標案小幫手
+  - ⚡ API 查詢「AI」：找到 ? 筆近期標案
+  - 關鍵字建議：AI、數位轉型、資訊服務、系統建置、軟體開發
+  - 相關資源：pcc.g0v.ronny.tw（已遷至 pcc-api.openfun.app）
+  - last_auto_checked: 2026-05-30
+---
+
+### 國科會計畫補助（國家科學及技術委員會）
+
+url: https://www.nstc.gov.tw/
+type: grant
+fields:
+  - 計畫主持人資料（學研界）
+  - 研究計畫書
+  - 合作企業資料（產學合作案）
+  - 預算明細
+deadline_rules:
+  - 依計畫類型不同，通常 Q3–Q4 徵件（下一年度）
+  - 前瞻計畫等特殊項目另行公告
+how_to_get_guidelines:
+  - https://www.nstc.gov.tw → 業務主題 → 補助 / 委辦 → 查詢各計畫公告
+restrictions:
+  - 學術單位主持為主
+  - 企業可透過「產學合作」身份參與
+notes:
+  - 企業適用方向：產學合作計畫（出資部分，取得研發成果）
+  - last_auto_checked: 2026-05-30
+
+---
+
 ## 擴充說明
 
 ### 新增平台格式

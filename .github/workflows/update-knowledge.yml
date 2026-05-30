@@ -1,0 +1,51 @@
+name: Update Knowledge Base
+
+on:
+  schedule:
+    # 每週一 09:00 台灣時間（UTC+8）= 週一 01:00 UTC
+    - cron: '0 1 * * 1'
+  workflow_dispatch:  # 允許手動觸發
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: tools/requirements-scraper.txt
+
+      - name: Install dependencies
+        run: pip install -r tools/requirements-scraper.txt
+
+      - name: Run knowledge updater
+        run: python tools/update-knowledge.py
+        env:
+          PYTHONUNBUFFERED: '1'
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            git diff --stat
+          fi
+
+      - name: Commit and push
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add knowledge/competition-platforms.md
+          git commit -m "chore: 自動更新補助/標案知識庫 [$(date '+%Y-%m-%d')]"
+          git push
