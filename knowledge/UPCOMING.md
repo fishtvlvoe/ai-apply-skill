@@ -1,4 +1,4 @@
-# 當前可申請機會（更新：2026-08-24）
+# 當前可申請機會（更新：2026-08-31）
 
 > 由 GitHub Action 每週一自動更新。⚡ 為自動偵測，人工確認前請以官網為準。
 
@@ -35,4 +35,4 @@
 - **sbir-grants Skill（SBIR 計畫書撰寫工具）** | [https://github.com/backtrue/sbir-grants](https://github.com/backtrue/sbir-grants)
 
 ---
-*自動產生於 2026-08-24，資料來源：knowledge/competition-platforms.md*
+*自動產生於 2026-08-31，資料來源：knowledge/competition-platforms.md*
