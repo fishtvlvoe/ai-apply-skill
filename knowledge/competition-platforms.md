@@ -530,3 +530,8 @@ notes:
 - **國發會補助**：https://www.ndc.gov.tw/
 - **科技部（國科會）計畫補助**：https://www.nstc.gov.tw/
 - **勞動部創業補助（微型創業鳳凰）**：待調查
+
+
+## Example Usage
+
+Resolved parameter handling for issue #20.
